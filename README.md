@@ -2,6 +2,16 @@
 
 图上运水解谜游戏。通过开阀平均、关阀隔离，探索红色圆圈能得到的水量，并提交成绩。精确分数计算、349 道官方关卡，以及自由探索水量的玩家创意工坊。
 
+## 容器化部署
+
+使用 Docker Compose 构建并启动 Waterline 和 PostgreSQL。配置好 `.env` 后，在仓库根目录运行：
+
+```sh
+docker compose up -d --build --wait
+```
+
+配置项、HTTPS 反向代理、1Panel、备份和恢复步骤见 [Docker Compose 部署教程](docs/deployment.md)。
+
 ## 本地运行联网版本
 
 需要 Node.js 22 或更新版本、Docker。后端使用 TypeScript、Fastify 和 PostgreSQL。
@@ -48,7 +58,7 @@ npm run dev
 
 整体使用本地 Noto Sans SC，字体许可位于 `assets/fonts/`；动效尊重减少动态效果设置。
 
-## 检查与部署
+## 检查
 
 ```sh
 npm test
@@ -59,7 +69,7 @@ npm run build
 
 `test:server` 需要 `.env` 中可访问的 PostgreSQL，测试会创建随机命名的独立 schema 并清理自己的测试数据，不修改正式数据。`npm start` 运行编译后的后端，需要通过环境变量提供数据库配置。
 
-生产部署使用 [1Panel / Docker 部署说明](docs/deployment.md)。源码、容器编排与数据库备份步骤均已准备。当前未提供密码找回、管理后台和工坊审核后台；每日挑战保留为后续扩展。
+当前未提供密码找回、管理后台和工坊审核后台；每日挑战保留为后续扩展。
 
 ## 文件结构
 
