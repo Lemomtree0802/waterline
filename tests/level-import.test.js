@@ -7,7 +7,7 @@ import {positionsFor,playLayout,valvePositions} from '../src/graph.js';
 import {compactWater} from '../src/water-text.js';
 
 test('the public catalog has contiguous display numbers and unique level keys', () => {
-  assert.equal(officialLevels.length,157);
+  assert.equal(officialLevels.length,349);
   assert.equal(new Set(officialLevels.map(p=>p.id+'@'+p.version)).size,officialLevels.length);
   for(const [i,p] of officialLevels.entries()) {
     assert.equal(p.number,i+1);

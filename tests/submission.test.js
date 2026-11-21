@@ -27,7 +27,7 @@ test('higher ranks hide exact and decimal scores while ties and lower scores rem
 });
 
 test('public puzzle definitions reveal neither thresholds nor reference solutions',()=>{
-  assert.equal(officialLevels.length,157);
+  assert.equal(officialLevels.length,349);
   for(const level of officialLevels) {
     for(const field of ['goalWater','optimalWater','plan','score','referenceMoves','lesson','clue'])assert.equal(level[field],undefined);
     assert.equal(E.validateOfficial(level).w.length,level.w.length);
