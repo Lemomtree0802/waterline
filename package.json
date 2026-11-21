@@ -1,0 +1,33 @@
+{
+  "name": "waterline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --env-file=.env server/main.ts",
+    "dev:offline": "node scripts/serve.mjs",
+    "start": "node dist-server/server/main.js",
+    "build": "tsc && node scripts/build-server.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:server": "tsx --env-file=.env --test tests/server.test.ts tests/ai-api.test.ts",
+    "check": "node scripts/check.mjs && tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.2",
+    "@fastify/rate-limit": "^11.2.0",
+    "@fastify/static": "^10.1.5",
+    "fastify": "^5.12.5",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
+    "ajv": "8.20.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0"
+}

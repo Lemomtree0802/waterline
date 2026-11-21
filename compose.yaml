@@ -1,0 +1,43 @@
+services:
+  app:
+    build: .
+    image: waterline:local
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://waterline:${DB_PASSWORD:?Set DB_PASSWORD in .env}@db:5432/waterline
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:?Set HTTPS PUBLIC_ORIGIN in .env}
+      VERIFICATION_WORKERS: ${VERIFICATION_WORKERS:-2}
+      TRUST_PROXY: ${TRUST_PROXY:-}
+    ports:
+      - '127.0.0.1:4174:3000'
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      default:
+        aliases:
+          - waterline-app
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: waterline
+      POSTGRES_USER: waterline
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U waterline -d waterline']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+networks:
+  default:
+    name: waterline-network
+volumes:
+  database-data:

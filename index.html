@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f6f1">
+    <meta name="description" content="水衡 Waterline：连接、断开，在图上寻找更好的运水解法。">
+    <title>水衡 Waterline</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./src/styles.css">
+    <link rel="stylesheet" href="./src/board-feedback.css">
+    <link rel="stylesheet" href="./src/submission.css">
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body data-screen="home">
+    <a href="#main" class="skip-link">跳到主要内容</a>
+    <header class="site-header">
+      <nav aria-label="主导航"><a href="#home" data-nav="home">首页</a><a href="#levels" data-nav="levels">进入游戏</a><a href="#workshop" data-nav="workshop">创意工坊</a></nav>
+      <button id="profile-button" class="profile-button" aria-label="登录或切换本地玩家"></button>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="site-footer"><span id="connection-label">正在连接</span><button class="text-button" data-action="about">关于</button></footer>
+    <div id="sync-status" class="sync-status" role="status" hidden><span id="sync-message"></span><button class="text-button" data-action="retry-sync">重试</button><button class="text-button" data-action="profile-settings">账号设置</button></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog id="modal" class="modal" aria-labelledby="modal-title"></dialog>
+    <div id="scene-curtain" class="scene-curtain" aria-hidden="true" hidden></div>
+    <noscript>请开启 JavaScript 后体验水衡。</noscript>
+  </body>
+</html>

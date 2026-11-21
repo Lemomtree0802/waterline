@@ -1,0 +1,29 @@
+/* A valve action equalizes a whole connected group in one step. */
+.graph .move-ring { fill: none; stroke: #467e69; stroke-width: 2; display: none; pointer-events: none; }
+.graph .move-label { font: 12px var(--numeric); fill: #385b49; text-anchor: middle; pointer-events: none; }
+.graph .goal-waterline { display: none; stroke: #8f5d42; stroke-width: 2; stroke-dasharray: 4 3; pointer-events: none; }
+.graph.has-goal .target-node .goal-waterline { display: block; }
+.graph.has-goal .target-label { font-size: 13px; letter-spacing: .6px; }
+.graph .goal-status { font: 700 19px var(--sans); fill: var(--success); stroke: #fffefa; stroke-width: 4px; paint-order: stroke; pointer-events: none; }
+.graph .target-node.has-reached-goal .target-ring { stroke: var(--success); stroke-dasharray: none; stroke-width: 2.2; }
+.graph .target-node.has-reached-goal .target-label { fill: var(--success); }
+.graph .move-group .move-ring { display: block; stroke-dasharray: var(--group-dash, none); }
+.graph .move-split .move-ring { stroke-width: 2.4; }
+.graph .water-gained .move-label { font-weight: 700; }
+.graph .water-lost .move-label { fill: #935641; }
+.graph .water-gained .node-border { stroke-width: 3; }
+.graph .water-lost .node-border { stroke-width: 2.6; stroke-dasharray: 3 2; }
+.graph .pipes .move-group .pipe { stroke: #6cac90; stroke-width: 7; }
+.graph .valve.last-move .valve-disc { stroke: #755b36; stroke-width: 3; }
+.graph .pipes .last-move .pipe { stroke-width: 7; }
+.graph .preview-group .move-ring { display: block; stroke: #ae854c; stroke-dasharray: 3 5; }
+.graph .pipes .preview-group .pipe { stroke: #b09965; }
+.graph .valve.is-previewed .valve-disc { stroke: #ae854c; stroke-width: 3; }
+/* The brief pulse acknowledges an atomic move; there is no traveling water. */
+.graph .pipes .is-open.is-flowing .pipe-flow { opacity: .8; animation: equalize-pulse .24s ease-out; stroke-dasharray: none; }
+.graph .valve-handle { transition-duration: .16s; }
+@keyframes equalize-pulse { from { opacity: 1; stroke-width: 6; } to { opacity: .4; stroke-width: 2; } }
+@media (prefers-reduced-motion: reduce) {
+  .graph .pipes .is-open.is-flowing .pipe-flow { animation: none; }
+  .graph .valve-handle, .graph .valve-disc, .graph .pipe { transition: none; }
+}

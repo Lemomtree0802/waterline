@@ -1,0 +1,12 @@
+.git
+node_modules
+dist-server
+.env
+.env.*
+screenshots
+tests
+docs
+*.html
+!index.html
+*.log
+coverage

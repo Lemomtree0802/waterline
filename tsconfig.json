@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext",
+    "strict": true, "allowJs": true, "checkJs": false, "esModuleInterop": true,
+    "outDir": "dist-server", "rootDir": ".", "skipLibCheck": true,
+    "types": ["node"], "forceConsistentCasingInFileNames": true
+  },
+  "include": ["server/**/*.ts", "server/**/*.mjs", "src/engine.js", "src/game.js", "src/levels.js", "src/service.js"]
+}
